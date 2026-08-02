@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estúdio Plá · Ferramentas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0a0a'/><text y='24' x='4' font-size='22' fill='%23F07A20'>P</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --s1: #141414;
+    --s2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #F07A20;
+    --amber: #f0a020;
+    --green: #2ecc71;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+  }
+  .studio { font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--muted); margin-bottom: 8px; }
+  h1 { font-size: 28px; font-weight: 800; color: var(--text); }
+  h1 span { color: var(--accent); }
+  .sub { font-size: 13px; color: var(--muted); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .16em;
+    color: var(--muted); margin-bottom: 16px; margin-top: 40px;
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media(max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+    transition: border-color .15s, background .15s;
+    cursor: pointer;
+  }
+  .card:hover { border-color: var(--accent); background: var(--s2); }
+  .card-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: .14em;
+    color: var(--accent); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;
+  }
+  .card-tag.green { color: var(--green); }
+  .card-tag.amber { color: var(--amber); }
+  .card-name { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .ts { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-top: 48px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="studio">ESTÚDIO PLÁ · FERRAMENTAS</div>
+  <h1>Bancada <span>PLÁ</span></h1>
+  <div class="sub">ferramentas · protocolos · produtos</div>
+</header>
+
+<div class="section-label">EM USO</div>
+<div class="grid">
+
+  <a class="card" href="console-mobile/">
+    <div class="card-tag green">● ATIVO</div>
+    <div class="card-name">Console Mobile</div>
+    <div class="card-desc">Gravador de voz com transcrição via Gemini. Pomodoro, cronômetro, biblioteca.</div>
+  </a>
+
+  <a class="card" href="https://estudio-pla.github.io/manual-analogico/" target="_blank">
+    <div class="card-tag green">● PUBLICADO</div>
+    <div class="card-name">Manual Analógico</div>
+    <div class="card-desc">Manual definitivo de captação, mixagem e masterização analógica. 3 volumes + bônus.</div>
+  </a>
+
+  <a class="card" href="https://estudio-pla.github.io/manifesto-pla/" target="_blank">
+    <div class="card-tag green">● PUBLICADO</div>
+    <div class="card-name">Manifesto PLÁ</div>
+    <div class="card-desc">Declaração de princípios e identidade do Estúdio Plá.</div>
+  </a>
+
+  <a class="card" href="https://estudio-pla.github.io/identidade-visual/" target="_blank">
+    <div class="card-tag green">● PUBLICADO</div>
+    <div class="card-name">Identidade Visual</div>
+    <div class="card-desc">Manual de identidade visual do Estúdio Plá. Tipografia, cores, aplicações.</div>
+  </a>
+
+</div>
+
+<div class="section-label">EM BANCADA</div>
+<div class="grid">
+
+  <a class="card" href="https://estudio-pla.github.io/smart-hum/" target="_blank">
+    <div class="card-tag amber">◐ BANCADA</div>
+    <div class="card-name">Smart Huum</div>
+    <div class="card-desc">Detecção de pitch em tempo real. Converte voz em instrumento.</div>
+  </a>
+
+  <a class="card" href="https://estudio-pla.github.io/smart-toys/" target="_blank">
+    <div class="card-tag amber">◐ BANCADA</div>
+    <div class="card-name">Smart Toys</div>
+    <div class="card-desc">Console de protótipos. Gerador de protocolos de gênero.</div>
+  </a>
+
+</div>
+
+<div class="ts" id="ts"></div>
+<script>
+  const d = new Date();
+  document.getElementById('ts').textContent =
+    'atualizado · ' + d.toLocaleDateString('pt-BR') + ' · unix ' + Math.floor(Date.now()/1000);
+</script>
+</body>
+</html>
