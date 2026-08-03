@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Manual de Identidade Visual — Estúdio Plá</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23060d18'/><text x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='%23D4A83A'>P</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #060d18;
+    --bg2:      #080f1e;
+    --card:     #0a1628;
+    --card2:    #0d1e34;
+    --card3:    #101e30;
+    --blue:     #1A6FBF;
+    --blue-lt:  #3A9FEF;
+    --gold:     #D4A83A;
+    --gold-lt:  #F0C84A;
+    --txt:      #c8daea;
+    --txt2:     #7a9ab8;
+    --txt3:     #3a5870;
+    --div:      rgba(58,159,239,0.12);
+    --green:    #00cc66;
+    --red:      #cc3333;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--txt);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 20px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV LATERAL ── */
+  .side-nav {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 200px;
+    background: var(--bg2);
+    border-right: 1px solid var(--div);
+    padding: 32px 0;
+    overflow-y: auto;
+    z-index: 100;
+  }
+  .side-nav-logo {
+    font-family: 'Lora', serif; font-size: 20px; font-weight: 700;
+    color: #fff; padding: 0 20px 24px;
+    border-bottom: 1px solid var(--div); margin-bottom: 16px;
+  }
+  .side-nav-logo span { color: var(--gold); }
+  .side-nav a {
+    display: block; padding: 6px 20px;
+    font-family: 'Manrope', sans-serif; font-size: 16px;
+    font-weight: 600; letter-spacing: 0.5px;
+    color: var(--txt3); text-decoration: none;
+    transition: all .15s; border-left: 2px solid transparent;
+  }
+  .side-nav a:hover { color: var(--txt); border-left-color: var(--blue-lt); background: rgba(58,159,239,0.05); }
+  .side-nav .section-label {
+    padding: 16px 20px 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--txt3);
+  }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: 200px;
+    min-height: 100vh;
+    padding: 64px 72px 220px 72px;
+    width: calc(100% - 200px);
+    max-width: none;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* ── SEÇÕES ── */
+  .chapter {
+    margin-bottom: 96px;
+    padding-bottom: 96px;
+    border-bottom: 1px solid var(--div);
+  }
+  .chapter:last-child { border-bottom: none; }
+
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .chapter h1 {
+    font-family: 'Lora', serif; font-size: 48px; font-weight: 700;
+    color: #fff; line-height: 1.15; margin-bottom: 24px;
+  }
+  .chapter h2 {
+    font-family: 'Lora', serif; font-size: 30px; font-weight: 700;
+    color: #fff; margin: 48px 0 16px; line-height: 1.2;
+  }
+  .chapter h3 {
+    font-family: 'Manrope', sans-serif; font-size: 17px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--blue-lt); margin: 32px 0 12px;
+  }
+  .chapter p { color: var(--txt); margin-bottom: 20px; max-width: 720px; font-size: 21px; line-height: 1.9; }
+  .chapter p.lead { font-size: 24px; color: var(--txt2); font-weight: 400; line-height: 1.8; margin-bottom: 28px; }
+
+  /* ── CAIXA DE EXPLICAÇÃO ── */
+  .why-box {
+    background: var(--card2);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px; margin: 24px 0;
+  }
+  .why-box .why-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .why-box p { margin: 0; color: var(--txt2); font-size: 18px; }
+
+  /* ── QUOTE BOX (padrão do projeto) ── */
+  .quote-bar {
+    border-left: 4px solid var(--blue-lt);
+    padding: 18px 24px; background: var(--card2);
+    border-radius: 0 8px 8px 0; margin: 28px 0;
+    font-family: 'Lora', serif; font-size: 21px; font-weight: 600;
+    color: var(--txt); line-height: 1.7; text-align: left;
+  }
+
+  /* ── AMOSTRAS DE COR ── */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .color-swatch {
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--div);
+  }
+  .color-block { height: 80px; }
+  .color-info { padding: 12px 14px; background: var(--card); }
+  .color-name { font-family: 'Manrope', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
+  .color-hex { font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--txt2); }
+  .color-use { font-family: 'Manrope', sans-serif; font-size: 15px; color: var(--txt3); margin-top: 4px; }
+
+  /* ── AMOSTRAS DE FONTE ── */
+  .font-sample {
+    background: var(--card);
+    border: 1px solid var(--div);
+    border-radius: 8px; padding: 24px 28px; margin: 16px 0;
+  }
+  .font-meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 15px;
+    color: var(--txt3); margin-bottom: 16px; letter-spacing: 1px;
+  }
+
+  /* ── HIERARQUIA TIPOGRÁFICA ── */
+  .typo-scale { margin: 24px 0; }
+  .typo-row {
+    display: flex; align-items: baseline; gap: 20px;
+    padding: 14px 0; border-bottom: 1px solid var(--div);
+  }
+  .typo-row:last-child { border-bottom: none; }
+  .typo-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    color: var(--txt3); min-width: 100px; letter-spacing: 1px;
+  }
+
+  /* ── COMPONENTES ── */
+  .component-box {
+    background: var(--card); border: 1px solid var(--div);
+    border-radius: 8px; padding: 28px; margin: 16px 0;
+  }
+  .component-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--txt3); margin-bottom: 16px;
+  }
+
+  .badge-demo {
+    display: inline-block; padding: 3px 10px; border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace; font-size: 15px;
+    font-weight: 700; letter-spacing: 1px; margin: 4px;
+  }
+
+  /* ── GRID DEMO ── */
+  .grid-demo {
+    background: var(--card2); border-radius: 8px; padding: 32px;
+    margin: 16px 0; position: relative;
+  }
+  .grid-line {
+    position: absolute; top: 0; bottom: 0;
+    border-left: 1px dashed rgba(58,159,239,0.2);
+  }
+
+  /* ── DECISÃO EM DEBATE ── */
+  .debate-box {
+    background: var(--card);
+    border: 1px solid rgba(212,168,58,0.3);
+    border-radius: 8px; padding: 20px 24px; margin: 24px 0;
+  }
+  .debate-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .debate-options { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+  .debate-opt {
+    flex: 1; min-width: 200px;
+    background: var(--card2); border-radius: 6px;
+    padding: 14px 16px; border: 1px solid var(--div);
+  }
+  .debate-opt-label { font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--txt3); margin-bottom: 8px; }
+
+  hr.section-div { border: none; height: 1px; background: var(--div); margin: 32px 0; }
+
+  code { font-family: 'JetBrains Mono', monospace; font-size: 16px; background: var(--card2); padding: 2px 7px; border-radius: 3px; color: var(--blue-lt); }
+
+  /* ── PLAYER POR CAPÍTULO ── */
+  .cp-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    background:var(--card2); border:1px solid var(--div); border-radius:6px;
+    padding:12px 16px; margin-bottom:28px; }
+  .cp-bar input { flex:1; min-width:180px; padding:7px 10px; background:var(--card);
+    border:1px solid var(--div); border-radius:4px; color:var(--txt);
+    font-family:'JetBrains Mono',monospace; font-size:13px; outline:none; }
+  .cp-bar input:focus { border-color:var(--blue-lt); }
+  .cp-btn { padding:8px 16px; border:none; border-radius:4px; cursor:pointer;
+    font-family:'Manrope',sans-serif; font-size:13px; font-weight:800; white-space:nowrap; }
+  .cp-btn-dl { background:var(--card); border:1px solid var(--div); color:var(--txt2); }
+  .cp-btn-dl:hover:not(:disabled) { border-color:var(--blue-lt); color:var(--blue-lt); }
+  .cp-btn-play { background:var(--blue); color:#fff; }
+  .cp-btn-play:hover:not(:disabled) { background:var(--blue-lt); }
+  .cp-btn-play:disabled, .cp-btn-dl:disabled { opacity:0.35; cursor:not-allowed; }
+  .cp-link { padding:8px 14px; background:none; border:1px solid rgba(212,168,58,0.5);
+    border-radius:4px; color:var(--gold); font-family:'Manrope',sans-serif;
+    font-size:13px; font-weight:700; text-decoration:none; display:none; white-space:nowrap; }
+  .cp-link.show { display:inline-block; }
+  .cp-status { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--txt3); }
+  /* BARRA FIXA - chave global + vozes */
+  .key-bar { position:fixed; top:0; left:0; right:0; z-index:200;
+    background:rgba(6,13,24,0.96); border-bottom:1px solid var(--div);
+    backdrop-filter:blur(10px); padding:10px 24px 10px 220px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .key-bar .kb-label { font-family:'JetBrains Mono',monospace; font-size:11px;
+    font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; }
+  .key-bar .kb-vbtn { padding:5px 12px; background:none; border:1px solid var(--div);
+    border-radius:3px; color:var(--txt2); font-family:'Manrope',sans-serif;
+    font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap; }
+  .key-bar .kb-vbtn.active { border-color:var(--blue-lt); color:var(--blue-lt); }
+  .key-bar .kb-key { flex:1; min-width:200px; max-width:340px; padding:6px 10px;
+    background:var(--card2); border:1px solid var(--div); border-radius:3px;
+    color:var(--txt); font-family:'JetBrains Mono',monospace; font-size:12px; outline:none; }
+  .key-bar .kb-key:focus { border-color:var(--blue-lt); }
+  .key-bar a { padding:6px 10px; background:var(--card2); border:1px solid var(--div);
+    border-radius:3px; color:var(--gold); text-decoration:none; font-size:14px; }
+  .main { padding-top: 80px !important; }
+  @media(max-width:900px){ .key-bar { padding-left:16px; } }
+
+  /* ── RESPONSIVE ── */  /* ── RESPONSIVE ── */
+  @media(max-width: 900px) {
+    .side-nav { display: none; }
+    .main { margin-left: 0; width: 100%; padding: 40px 24px 220px 24px; }
+    .voice-player { padding: 12px 16px; }
+    .vp-key { min-width: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV LATERAL -->
+<nav class="side-nav">
+  <div class="side-nav-logo">Estúdio <span>Plá</span></div>
+  <div class="section-label">Introdução</div>
+  <a href="#intro">O que é este manual</a>
+  <a href="#fundacao">A fundação visual</a>
+  <div class="section-label">Identidade</div>
+  <a href="#cores">Cores</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#hierarquia">Hierarquia</a>
+  <div class="section-label">Componentes</div>
+  <a href="#quote">Quote box</a>
+  <a href="#cards">Cards e painéis</a>
+  <a href="#badges">Badges e labels</a>
+  <a href="#botoes">Botões</a>
+  <div class="section-label">Layout</div>
+  <a href="#diagramacao">Diagramação</a>
+  <a href="#grid">Grid e margens</a>
+  <div class="section-label">Voz</div>
+  <a href="#voz">Tom e voz</a>
+  <a href="#animacao">Animação</a>
+  <div class="section-label">Decisões</div>
+  <a href="#debate">Em debate</a>
+  <a href="#regras">Regras absolutas</a>
+</nav>
+
+<div class="key-bar">
+  <span class="kb-label">🎙 Voz</span>
+  <button class="kb-vbtn active" id="kbCharon" onclick="kbSetVoice('Charon')">Charon ♂</button>
+  <button class="kb-vbtn" id="kbKore" onclick="kbSetVoice('Kore')">Kore ♀</button>
+  <input class="kb-key" id="kbKey" type="password" placeholder="Cole sua chave de voz aqui"/>
+  <a href="https://aistudio.google.com/app/apikey" target="_blank" title="Obter chave gratuita">🔑</a>
+</div>
+
+<div class="main">
+
+<!-- INTRO -->
+<section class="chapter" id="intro">
+  <div class="cp-bar" data-narr="Manual de Identidade Visual do Estúdio Plá. Versão um ponto zero. Julho de dois mil e vinte e seis. Este documento define a linguagem visual do Estúdio Plá — como o estúdio se apresenta em produtos, documentos, releases e comunicações. Uma identidade visual não é sobre ser bonito. É sobre ser reconhecível. Quando alguém abre qualquer produto do Estúdio Plá — o SmartKhroma, o Manual Analógico, o Manifesto PLA — deve sentir que é o mesmo lugar, o mesmo cuidado, a mesma mão. Sem precisar ver o logo. Este manual documenta as decisões tomadas até julho de dois mil e vinte e seis, explica o raciocínio por trás de cada uma, e serve como referência para tudo que vier depois. Por que ter um manual? Sem um manual, cada produto começa do zero. Com um manual, cada produto começa onde o anterior parou. É a diferença entre construir um estúdio e construir uma bagunça de qualidade.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Manual de Identidade Visual · v1.0 · 2026</div>
+  <h1>Estúdio Plá</h1>
+  <p class="lead">Este documento define a linguagem visual do Estúdio Plá — como o estúdio se apresenta em produtos, documentos, releases e comunicações.</p>
+  <p>Uma identidade visual não é sobre ser bonito. É sobre ser <strong>reconhecível</strong>. Quando alguém abre qualquer produto do Estúdio Plá — o SmartKhroma, o Manual, o Manifesto PLA — deve sentir que é o mesmo lugar, o mesmo cuidado, a mesma mão. Sem precisar ver o logo.</p>
+  <p>Este manual documenta as decisões tomadas até julho de 2026, explica o raciocínio por trás de cada uma, e serve como referência para tudo que vier depois.</p>
+
+  <div class="why-box">
+    <div class="why-label">Por que ter um manual?</div>
+    <p>Sem um manual, cada produto começa do zero. Com um manual, cada produto começa onde o anterior parou. É a diferença entre construir um estúdio e construir uma bagunça de qualidade.</p>
+  </div>
+</section>
+
+<!-- FUNDAÇÃO VISUAL -->
+<section class="chapter" id="fundacao">
+  <div class="cp-bar" data-narr="A fundação visual. Três palavras definem o visual do Estúdio Plá: profundidade, precisão e calor. Profundidade — o fundo escuro não é preto absoluto. É um azul muito escuro, como uma sala de controle às três da manhã com as luzes da mesa ligadas. Cria profundidade sem ser agressivo. Precisão — o azul técnico vem dos monitores, dos LEDs de medição, dos scopes analógicos. É a cor de algo que está sendo medido com exatidão. Calor — o dourado é a cor dos VU meters analógicos, dos transformadores, do calor literal das válvulas. Não é decorativo — é funcional, aparece onde existe algo importante.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Fundação</div>
+  <h1>A Fundação Visual</h1>
+  <p class="lead">Três palavras definem o visual do Estúdio Plá: <strong>profundidade</strong>, <strong>precisão</strong> e <strong>calor</strong>.</p>
+
+  <p><strong>Profundidade</strong> — o fundo escuro (#060d18) não é preto absoluto. É um azul muito escuro, como uma sala de controle às 3h da manhã com as luzes da mesa ligadas. Cria profundidade sem ser agressivo.</p>
+  <p><strong>Precisão</strong> — o azul técnico (#3A9FEF) vem dos monitores, dos LEDs de medição, dos scopes analógicos. É a cor de algo que está sendo medido com exatidão.</p>
+  <p><strong>Calor</strong> — o dourado (#D4A83A) é a cor dos VU meters analógicos, dos transformadores, do calor literal das válvulas. Não é decorativo — é funcional, aparece onde existe algo importante.</p>
+
+  <div class="quote-bar">
+    "O visual do Estúdio Plá é a sala de controle que gostaríamos de ter. Escura o suficiente para ver os medidores. Precisa o suficiente para confiar nos números. Quente o suficiente para querer ficar."
+  </div>
+</section>
+
+<!-- CORES -->
+<section class="chapter" id="cores">
+  <div class="cp-bar" data-narr="Capítulo um, Cores. A paleta do Estúdio Plá é composta de fundos, cores funcionais e cores de estado. Fundos — nunca branco, nunca preto puro. O fundo principal é o tom mais escuro. O card dois é usado em quote boxes e campos de texto. Cores funcionais — cada cor tem uma função específica, não são decorativas. O azul principal é a cor de links e bordas ativas. O dourado aparece em eyebrows e labels de seção. Por que não usar mais cores? Cada cor adicionada dilui o significado das outras. Com doze cores, você não saberia mais o que cada uma significa.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 01</div>
+  <h1>Cores</h1>
+  <p class="lead">A paleta do Estúdio Plá é composta de <strong>fundos</strong>, <strong>cores funcionais</strong> e <strong>cores de estado</strong>.</p>
+
+  <h2>Fundos</h2>
+  <p>Nunca branco. Nunca preto puro. A profundidade vem de camadas de azul muito escuro.</p>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background:#060d18"></div>
+      <div class="color-info">
+        <div class="color-name">Background</div>
+        <div class="color-hex">--bg · #060d18</div>
+        <div class="color-use">Fundo de todas as páginas</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#080f1e"></div>
+      <div class="color-info">
+        <div class="color-name">Background 2</div>
+        <div class="color-hex">--bg2 · #080f1e</div>
+        <div class="color-use">Nav lateral, header alternativo</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#0a1628"></div>
+      <div class="color-info">
+        <div class="color-name">Card</div>
+        <div class="color-hex">--card · #0a1628</div>
+        <div class="color-use">Cards, painéis, player</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#0d1e34"></div>
+      <div class="color-info">
+        <div class="color-name">Card 2</div>
+        <div class="color-hex">--card2 · #0d1e34</div>
+        <div class="color-use">Quote boxes, inputs, sub-cards</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Cores Funcionais</h2>
+  <p>Cada cor tem uma função específica. Não são decorativas — cada vez que aparecem, significam algo.</p>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background:#3A9FEF"></div>
+      <div class="color-info">
+        <div class="color-name">Azul Principal</div>
+        <div class="color-hex">--blue-lt · #3A9FEF</div>
+        <div class="color-use">Links, bordas ativas, destaques técnicos, borda do quote box</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#1A6FBF"></div>
+      <div class="color-info">
+        <div class="color-name">Azul Botão</div>
+        <div class="color-hex">--blue · #1A6FBF</div>
+        <div class="color-use">Botões primários, fills</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#D4A83A"></div>
+      <div class="color-info">
+        <div class="color-name">Dourado</div>
+        <div class="color-hex">--gold · #D4A83A</div>
+        <div class="color-use">Eyebrows, labels de seção, badges importantes, borda do debate box</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#F0C84A"></div>
+      <div class="color-info">
+        <div class="color-name">Dourado Claro</div>
+        <div class="color-hex">--gold-lt · #F0C84A</div>
+        <div class="color-use">Hover do dourado, detalhes dos VU meters</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Texto</h2>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background:#c8daea"></div>
+      <div class="color-info">
+        <div class="color-name">Texto Principal</div>
+        <div class="color-hex">--txt · #c8daea</div>
+        <div class="color-use">Corpo de texto, parágrafos</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#7a9ab8"></div>
+      <div class="color-info">
+        <div class="color-name">Texto Secundário</div>
+        <div class="color-hex">--txt2 · #7a9ab8</div>
+        <div class="color-use">Subtítulos, descrições, labels</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#3a5870"></div>
+      <div class="color-info">
+        <div class="color-name">Texto Terciário</div>
+        <div class="color-hex">--txt3 · #3a5870</div>
+        <div class="color-use">Hints, metadados, copyright</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Estados</h2>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background:#00cc66"></div>
+      <div class="color-info">
+        <div class="color-name">Verde — Aprovado</div>
+        <div class="color-hex">#00cc66</div>
+        <div class="color-use">Sucesso, aprovado, online, gravação ativa</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#cc3333"></div>
+      <div class="color-info">
+        <div class="color-name">Vermelho — Alerta</div>
+        <div class="color-hex">#cc3333</div>
+        <div class="color-use">Erro, clip, REC, crítico</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">Por que não usar mais cores?</div>
+    <p>Cada cor adicionada dilui o significado das outras. No SmartKhroma, quando você vê vermelho sabe que está clipando. Quando vê dourado sabe que é um label importante. Se tivéssemos 12 cores, você não saberia mais o que cada uma significa.</p>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section class="chapter" id="tipografia">
+  <div class="cp-bar" data-narr="Capítulo dois, Tipografia. Três famílias de fontes. Cada uma com uma função única. Lora — os títulos. É uma fonte com serifa, com história longa. Por que Lora? A decisão foi sem itálico em serifa. Ênfase se faz com peso ou cor, não inclinando a letra. Manrope — o corpo. Sans-serif, sem serifas. O grande diferencial é a variação de peso, do trezentos ao oitocentos. Isso permite criar hierarquia inteiramente com o peso da fonte, sem mudar de família. JetBrains Mono — o técnico. Monospace — cada letra ocupa exatamente o mesmo espaço horizontal. No Estúdio Plá serve para valores técnicos: versões, frequências, decibéis, timestamps.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 02</div>
+  <h1>Tipografia</h1>
+  <p class="lead">Três famílias. Cada uma com uma função única. Nunca intercambiáveis.</p>
+
+  <h2>Lora — Os Títulos</h2>
+  <div class="font-sample">
+    <div class="font-meta">LORA · SERIF · Google Fonts · Uso: títulos editoriais únicamente</div>
+    <div style="font-family:'Lora',serif;font-size:42px;font-weight:700;color:#fff;line-height:1.1">Manual Definitivo</div>
+    <div style="font-family:'Lora',serif;font-size:28px;font-weight:700;color:#fff;margin-top:12px">Gravação Analógica</div>
+    <div style="font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--txt2);margin-top:12px">A física completa do som</div>
+  </div>
+
+  <p>Lora é uma fonte com serifa (os pequenos pés nas letras). Fontes serifadas têm uma história longa — jornais, livros, documentos que precisam de autoridade. Lora em específico tem um equilíbrio entre o clássico e o contemporâneo: não é a Times New Roman (muito datada), não é a Playfair Display (muito dramática). É elegante e leve ao mesmo tempo.</p>
+
+  <div class="why-box">
+    <div class="why-label">Por que Lora e não a fonte dos volumes?</div>
+    <p>A fonte dos volumes (Playfair Display em itálico) é bonita em títulos curtos e grandes — tem movimento e personalidade. Mas em tamanhos menores, o itálico fecha as letras e fica ilegível. Lora mantém a elegância da serifa sem depender do itálico para ter personalidade. A decisão: <strong>sem itálico em serifa</strong>. Se precisa de ênfase, muda o peso ou a cor — não inclina a letra.</p>
+  </div>
+
+  <h2>Manrope — O Corpo</h2>
+  <div class="font-sample">
+    <div class="font-meta">MANROPE · SANS-SERIF · Google Fonts · Uso: corpo, interface, labels</div>
+    <div style="font-family:'Manrope',sans-serif;font-size:18px;font-weight:400;color:var(--txt);line-height:1.8;margin-bottom:12px">Texto de corpo regular — peso 400. A leitura principal acontece aqui. Limpa, sem serifas, com espaçamento generoso.</div>
+    <div style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#fff">Texto em negrito — peso 700. Para destaque inline dentro do corpo.</div>
+    <div style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-top:12px">EYEBROW — PESO 700 · UPPERCASE · LETTER-SPACING 5px</div>
+    <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;color:#fff;letter-spacing:1px;margin-top:8px">BOTÃO CTA — PESO 800 · UPPERCASE</div>
+  </div>
+
+  <p>Manrope é sans-serif — sem serifas, sem pés. É a fonte da interface. Funciona em 8px e em 80px. O grande diferencial dela é a variação de peso: do 300 (muito leve) ao 800 (extrabold). Isso significa que podemos criar hierarquia visual inteiramente com o peso da fonte, sem precisar mudar de família.</p>
+
+  <div class="why-box">
+    <div class="why-label">Por que Manrope e não outra sans-serif?</div>
+    <p>Inter (a fonte padrão do design de produto atual) é boa mas genérica — está em todo lugar. Manrope tem personalidade própria nas letras maiúsculas e nos números. É moderna mas não fria. No contexto do Estúdio Plá, ao lado da Lora, cria um par equilibrado: a serifa tem história, a sans-serif tem precisão.</p>
+  </div>
+
+  <h2>JetBrains Mono — O Técnico</h2>
+  <div class="font-sample">
+    <div class="font-meta">JETBRAINS MONO · MONOSPACE · Uso: código, valores técnicos, timestamps, hex</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:400;color:var(--blue-lt)">#3A9FEF · 24000Hz · -23 LUFS · v1.19.0</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:400;color:var(--txt2);margin-top:8px">PLAK · 21/07/2026 · SmartKhroma · bios-pla-pi-2026</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-top:8px">EYEBROW TÉCNICO · PLA v0.1</div>
+  </div>
+
+  <p>Monospace significa que cada letra ocupa exatamente o mesmo espaço horizontal. Criada para código. Aqui serve para qualquer valor técnico: números de versão, cores em hex, frequências, valores de dB, timestamps. Quando você vê JetBrains Mono, sabe que é um dado preciso, não texto narrativo.</p>
+</section>
+
+<!-- HIERARQUIA -->
+<section class="chapter" id="hierarquia">
+  <div class="cp-bar" data-narr="Capítulo três, Hierarquia tipográfica. Hierarquia é a ordem de importância do texto. Do mais importante para o menos importante: eyebrow em Manrope peso setecentos, quinze pixels, uppercase, em dourado. Título principal em Lora peso setecentos, quarenta e quatro pixels, branco. Título de seção em Lora vinte e seis pixels. Subtítulo em Manrope uppercase azul claro. Corpo em Manrope dezessete pixels. A regra do itálico: no Estúdio Plá, não usamos itálico como recurso de ênfase. Para ênfase usa-se peso ou cor.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 03</div>
+  <h1>Hierarquia Tipográfica</h1>
+  <p class="lead">Hierarquia é a ordem de importância do texto. O olho deve saber imediatamente o que ler primeiro, segundo e terceiro.</p>
+
+  <div class="typo-scale">
+    <div class="typo-row">
+      <span class="typo-label">EYEBROW</span>
+      <span style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold)">ESTÚDIO PLÁ · PLA v0.1</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">H1 · Título</span>
+      <span style="font-family:'Lora',serif;font-size:40px;font-weight:700;color:#fff;line-height:1">Manual Analógico</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">H2 · Seção</span>
+      <span style="font-family:'Lora',serif;font-size:26px;font-weight:700;color:#fff">Volume 01 — Tracking</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">H3 · Subsec</span>
+      <span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue-lt)">Microfones e Captação</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">Corpo</span>
+      <span style="font-family:'Manrope',sans-serif;font-size:16px;font-weight:400;color:var(--txt)">A coercividade da fita é a resistência do óxido magnético a ser desmagnetizado.</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">Destaque</span>
+      <span style="font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;color:#fff">Neve 1073 · SSL 4000G</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">Legenda</span>
+      <span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:400;color:var(--txt2)">Figura 3 — Fluxo de sinal do console analógico</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">Técnico</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:400;color:var(--blue-lt)">-23 LUFS · 30 IPS · 1kHz · 0 dBFS</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-label">Meta</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:var(--txt3)">© 2026 Estúdio Plá · Bauru, Brasil</span>
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">A regra do itálico</div>
+    <p>No Estúdio Plá, <strong>não usamos itálico</strong> como recurso de ênfase ou estilo. Itálico só aparece quando tecnicamente necessário (como em nomes de obras citadas). Para ênfase: usa-se peso (700 ou 800). Para destaque: usa-se cor (branco puro ou dourado). Itálico em Lora é belo mas reservado — quando aparecer, deve ser raro o suficiente para chamar atenção.</p>
+  </div>
+</section>
+
+<!-- QUOTE BOX -->
+<section class="chapter" id="quote">
+  <div class="cp-bar" data-narr="Capítulo quatro, Quote Box. O componente mais importante do Estúdio Plá. Aparece em todos os produtos. Anatomia: borda esquerda de quatro pixels em azul claro sólido. Fundo em card dois. Fonte Lora, dezessete pixels, peso seiscentos, sem itálico. Texto justificado. Por que borda lateral e não centralizado? A borda lateral indica que o texto está fora do fluxo principal — é uma voz diferente, uma pausa. O centralizado transforma o quote em decoração. A borda esquerda transforma em evidência.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 04</div>
+  <h1>Quote Box — Citação e Destaque</h1>
+  <p class="lead">O componente mais importante do Estúdio Plá. Aparece em todos os produtos.</p>
+
+  <div class="component-box">
+    <div class="component-label">Exemplo ao vivo</div>
+    <div class="quote-bar">
+      O som analógico não é um código aguardando leitura. É energia deixando um rastro físico de sua existência — através de ferro, cobre e óxido magnético.
+    </div>
+  </div>
+
+  <h3>Anatomia</h3>
+  <ul>
+    <li><strong>Borda esquerda:</strong> 4px sólida, cor <code>--blue-lt</code> (#3A9FEF)</li>
+    <li><strong>Fundo:</strong> <code>--card2</code> (#0d1e34)</li>
+    <li><strong>Border-radius:</strong> 0 no canto esquerdo, 8px nos cantos direitos</li>
+    <li><strong>Fonte:</strong> Lora, 17px, peso 600, sem itálico</li>
+    <li><strong>Texto:</strong> justificado, cor <code>--txt</code></li>
+    <li><strong>Padding:</strong> 18px vertical, 24px horizontal</li>
+  </ul>
+
+  <div class="why-box">
+    <div class="why-label">Por que borda lateral e não centralizado?</div>
+    <p>A borda lateral indica que o texto está "fora" do fluxo principal — é uma voz diferente, uma pausa. O centralizado transforma o quote em decoração. A borda esquerda transforma em evidência. A Luana e o Kaue testaram os dois em 21/07/2026 e a borda lateral venceu por criar mais impacto sem parecer um elemento gráfico separado do texto.</p>
+  </div>
+
+  <h3>Quando usar</h3>
+  <ul>
+    <li>Frases que definem a filosofia do estúdio</li>
+    <li>Citações técnicas importantes dentro dos volumes</li>
+    <li>Trechos que merecem destaque mas não são títulos</li>
+  </ul>
+
+  <h3>Quando NÃO usar</h3>
+  <ul>
+    <li>Informações operacionais (use um card simples)</li>
+    <li>Mais de um quote box por seção (perde o impacto)</li>
+    <li>Textos longos acima de 3 linhas (melhor usar um card)</li>
+  </ul>
+</section>
+
+<!-- CARDS -->
+<section class="chapter" id="cards">
+  <div class="cp-bar" data-narr="Capítulo cinco, Cards e painéis. Card base: fundo escuro, borda fina azul, raio de oito pixels. Card com acento azul: borda esquerda azul — indica entrega técnica ou item aprovado. Card com acento dourado: borda esquerda dourada — indica decisão de alto impacto. Card com acento vermelho: borda esquerda vermelha — indica erro ou pendência urgente.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 05</div>
+  <h1>Cards e Painéis</h1>
+  <p class="lead">Cards organizam informação em blocos visuais. Existem quatro variações.</p>
+
+  <h3>Card Base</h3>
+  <div class="component-box" style="background:var(--card);border:1px solid var(--div)">
+    <div class="component-label">Card Base — uso geral</div>
+    <p style="margin:0;color:var(--txt)">Background card (#0a1628), borda div (rgba azul 12%), radius 8px. Uso para informações neutras.</p>
+  </div>
+
+  <h3>Card com Acento Azul — Técnico / Aprovado</h3>
+  <div class="component-box" style="border-left:4px solid var(--blue-lt)">
+    <div class="component-label">Acento Azul · Técnico · Aprovado · Em andamento</div>
+    <p style="margin:0;color:var(--txt)">Borda esquerda 4px azul claro. Indica entrega técnica, item aprovado, informação em andamento.</p>
+  </div>
+
+  <h3>Card com Acento Dourado — Importante / Fundação</h3>
+  <div class="component-box" style="border-left:4px solid var(--gold)">
+    <div class="component-label">Acento Dourado · Fundação · Decisão importante</div>
+    <p style="margin:0;color:var(--txt)">Borda esquerda 4px dourado. Indica decisão de alto impacto, contexto fundador, item crítico.</p>
+  </div>
+
+  <h3>Card com Acento Vermelho — Problema / Crítico</h3>
+  <div class="component-box" style="border-left:4px solid var(--red)">
+    <div class="component-label">Acento Vermelho · Bug · Crítico · Pendente urgente</div>
+    <p style="margin:0;color:var(--txt)">Borda esquerda 4px vermelho. Indica erro, pendência urgente, item que bloqueia entrega.</p>
+  </div>
+</section>
+
+<!-- BADGES -->
+<section class="chapter" id="badges">
+  <div class="cp-bar" data-narr="Capítulo seis, Badges e labels. Badges são rótulos pequenos que classificam um item em uma categoria. Nunca decorativos. Sempre têm uma função. Fonte JetBrains Mono, uppercase, peso setecentos.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 06</div>
+  <h1>Badges e Labels</h1>
+  <p class="lead">Badges são rótulos pequenos que classificam um item em uma categoria. Nunca decorativos.</p>
+
+  <div class="component-box">
+    <div class="component-label">Badges disponíveis</div>
+    <div style="margin-top:8px">
+      <span class="badge-demo" style="background:rgba(58,159,239,0.15);color:var(--blue-lt);border:1px solid rgba(58,159,239,0.35)">PLA v0.1</span>
+      <span class="badge-demo" style="background:rgba(212,168,58,0.15);color:var(--gold);border:1px solid rgba(212,168,58,0.35)">FUNDAÇÃO</span>
+      <span class="badge-demo" style="background:rgba(0,204,102,0.15);color:var(--green);border:1px solid rgba(0,204,102,0.35)">APROVADO</span>
+      <span class="badge-demo" style="background:rgba(204,51,51,0.15);color:var(--red);border:1px solid rgba(204,51,51,0.35)">CRÍTICO</span>
+      <span class="badge-demo" style="background:rgba(58,159,239,0.1);color:var(--txt2);border:1px solid var(--div)">GitHub Pages</span>
+    </div>
+    <p style="margin-top:16px;color:var(--txt2);font-size:13px">Fonte: JetBrains Mono · 11px · peso 700 · letra-spacing 1px · uppercase · padding 3px/10px · radius 3px</p>
+  </div>
+</section>
+
+<!-- BOTÕES -->
+<section class="chapter" id="botoes">
+  <div class="cp-bar" data-narr="Capítulo sete, Botões. Hierarquia em três níveis. Botão primário: fundo azul sólido, texto branco, uppercase. A ação principal da tela. Deve existir um único botão primário por bloco. Botão secundário: sem fundo, borda fina. Ação alternativa. Botão download: borda e cor dourados. Aparece quando há arquivo para baixar.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 07</div>
+  <h1>Botões</h1>
+
+  <div class="component-box">
+    <div class="component-label">Hierarquia de botões</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+      <button style="padding:12px 28px;background:var(--blue);border:none;border-radius:4px;color:#fff;font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;cursor:pointer">▶ PRIMÁRIO</button>
+      <button style="padding:12px 20px;background:none;border:1px solid var(--div);border-radius:4px;color:var(--txt2);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer">■ SECUNDÁRIO</button>
+      <a style="padding:12px 20px;background:none;border:1px solid rgba(212,168,58,0.3);border-radius:4px;color:var(--gold);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none">⬇ DOWNLOAD</a>
+    </div>
+  </div>
+
+  <ul style="margin-top:16px">
+    <li><strong>Primário</strong> — fundo azul sólido. A ação principal da tela. Deve existir um único botão primário por bloco.</li>
+    <li><strong>Secundário</strong> — borda fina, fundo transparente. Ação alternativa ou de suporte.</li>
+    <li><strong>Download/Link</strong> — borda dourada, cor dourada. Aparece quando há um arquivo para baixar.</li>
+  </ul>
+</section>
+
+<!-- DIAGRAMAÇÃO -->
+<section class="chapter" id="diagramacao">
+  <div class="cp-bar" data-narr="Capítulo oito, Diagramação. Todo o texto de corpo do Estúdio Plá é justificado — cada linha tem a mesma largura. Por que justificado? Texto justificado cria blocos visuais mais sólidos. Em documentos técnicos e editoriais é o padrão. Transmite cuidado e autoridade. Largura máxima do texto: nunca ultrapassa seiscentos e oitenta pixels.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 08</div>
+  <h1>Diagramação</h1>
+  <p class="lead">Diagramação é como o texto e os elementos se posicionam na página.</p>
+
+  <h2>Texto Justificado</h2>
+  <p>Todo o texto de corpo do Estúdio Plá é <strong>justificado</strong>. Isso significa que cada linha tem a mesma largura — o texto se alinha tanto na margem esquerda quanto na direita.</p>
+
+  <div class="component-box">
+    <div class="component-label">Comparação</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px">
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt3);margin-bottom:8px">SEM JUSTIFICAR (alinhado à esquerda)</p>
+        <p style="text-align:left;color:var(--txt2);font-size:14px">A física do som analógico não é um segredo. Ela está em livros de engenharia e em décadas de prática.</p>
+      </div>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);margin-bottom:8px">COM JUSTIFICAR ✓</p>
+        <p style="text-align:justify;color:var(--txt);font-size:14px">A física do som analógico não é um segredo. Ela está em livros de engenharia e em décadas de prática.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">Por que justificado?</div>
+    <p>Texto justificado cria blocos visuais mais sólidos na página. Em documentos técnicos e editoriais (manuais, livros, revistas), o texto justificado é o padrão — comunica cuidado e formalidade. No Estúdio Plá, onde o conteúdo precisa ter autoridade técnica, o texto justificado reforça esse caráter sem precisar dizer nada.</p>
+  </div>
+
+  <h2>Largura Máxima do Texto</h2>
+  <p>Linhas muito longas cansam a leitura. O texto de corpo nunca ultrapassa <code>680px</code> de largura. Em telas largas, o texto fica no centro com margens generosas dos dois lados.</p>
+</section>
+
+<!-- GRID -->
+<section class="chapter" id="grid">
+  <div class="cp-bar" data-narr="Capítulo nove, Grid e margens. Página com navegação lateral: espaçamento horizontal de sessenta e quatro pixels. Página simples: quarenta pixels. Cards: vinte e quatro pixels. Mobile: dezesseis pixels, cem por cento da largura da tela.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 09</div>
+  <h1>Grid e Margens</h1>
+
+  <table style="width:100%;border-collapse:collapse;font-size:13px;margin:16px 0">
+    <tr style="border-bottom:1px solid var(--div)">
+      <th style="padding:10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt2)">Contexto</th>
+      <th style="padding:10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt2)">Padding horizontal</th>
+      <th style="padding:10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt2)">Máxima largura</th>
+    </tr>
+    <tr style="border-bottom:1px solid var(--div)"><td style="padding:10px;font-family:'JetBrains Mono',monospace;color:var(--gold)">Página com nav lateral</td><td style="padding:10px;color:var(--txt)">64px</td><td style="padding:10px;color:var(--txt)">900px (excl. nav)</td></tr>
+    <tr style="border-bottom:1px solid var(--div)"><td style="padding:10px;font-family:'JetBrains Mono',monospace;color:var(--gold)">Página simples (release)</td><td style="padding:10px;color:var(--txt)">40px</td><td style="padding:10px;color:var(--txt)">760px</td></tr>
+    <tr style="border-bottom:1px solid var(--div)"><td style="padding:10px;font-family:'JetBrains Mono',monospace;color:var(--gold)">Player / Cards</td><td style="padding:10px;color:var(--txt)">24px</td><td style="padding:10px;color:var(--txt)">680px</td></tr>
+    <tr><td style="padding:10px;font-family:'JetBrains Mono',monospace;color:var(--gold)">Mobile</td><td style="padding:10px;color:var(--txt)">16px</td><td style="padding:10px;color:var(--txt)">100vw</td></tr>
+  </table>
+</section>
+
+<!-- TOM E VOZ -->
+<section class="chapter" id="voz">
+  <div class="cp-bar" data-narr="Capítulo dez, Tom e voz. Direto, sem rodeios. Técnico sem ser hermético — dois níveis em cada explicação. Sem incertezas. Sem arrogância. Vozes sintéticas: Charon, masculina, e Kore, feminina. Conduzidas como professores experientes — voz firme, clara, com autoridade. Ritmo de quem ensina. Sem afetação, sem sussurro, sem dramatismo de narrador de documentário.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 10</div>
+  <h1>Tom e Voz</h1>
+  <p class="lead">Como o Estúdio Plá escreve. Como fala. Como soa.</p>
+
+  <h2>Voz Escrita</h2>
+  <ul>
+    <li><strong>Direto.</strong> Sem rodeios. "A fita não esquece." Não "Poderíamos dizer que a fita possui certas características de retenção."</li>
+    <li><strong>Técnico sem ser hermético.</strong> Dois níveis em cada explicação: a porta de entrada para quem está chegando, e a profundidade para quem já vive disso.</li>
+    <li><strong>Sem incertezas.</strong> O Estúdio Plá tem certezas. "Isso funciona." Não "Acreditamos que isso possa funcionar."</li>
+    <li><strong>Sem arrogância.</strong> Diferença entre saber e ostentar. "Este trabalho documenta o que não existia." Não "Somos os melhores."</li>
+  </ul>
+
+  <h2>Vozes Sintéticas — Motor de Voz</h2>
+  <div class="component-box">
+    <table style="width:100%;border-collapse:collapse">
+      <tr style="border-bottom:1px solid var(--div)">
+        <th style="padding:10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt2)">Voz</th>
+        <th style="padding:10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt2)">Gênero</th>
+        <th style="padding:10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--txt2)">Instrução de condução</th>
+      </tr>
+      <tr style="border-bottom:1px solid var(--div)">
+        <td style="padding:10px;font-family:'JetBrains Mono',monospace;color:var(--gold)">Charon</td>
+        <td style="padding:10px;color:var(--txt)">Masculina</td>
+        <td style="padding:10px;color:var(--txt2);font-size:13px">Professor experiente. Voz firme, clara, com autoridade. Ritmo de aula. Pausas precisas. Sem dramatismo.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;font-family:'JetBrains Mono',monospace;color:var(--gold)">Kore</td>
+        <td style="padding:10px;color:var(--txt)">Feminina</td>
+        <td style="padding:10px;color:var(--txt2);font-size:13px">Professora experiente. Mesma autoridade. Mesma precisão. Sem suavidade excessiva. Presença total.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">Por que "professor" e não "narrador"?</div>
+    <p>Narrador de documentário tem drama, suspense, modulações amplas. Professor fala com quem está aprendendo — claro, preciso, sem afetação. O conteúdo do Estúdio Plá é técnico e educacional. A voz que serve é a que ensina, não a que narra.</p>
+  </div>
+</section>
+
+<!-- ANIMAÇÃO -->
+<section class="chapter" id="animacao">
+  <div class="cp-bar" data-narr="Capítulo onze, Animação — rolos de fita. O elemento animado padrão de todos os produtos do Estúdio Plá. Aprovado em julho de dois mil e vinte e seis, versão três ponto um. Inspirado no Pioneer RT-909. Os spools giram anti-horário. A furação tem três pás em arco de coroa, no estilo do símbolo de radioatividade. O Stop funciona via pausa de animação, sem pulo.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 11</div>
+  <h1>Animação — Rolos de Fita</h1>
+  <p class="lead">O elemento animado padrão de todos os produtos do Estúdio Plá.</p>
+
+  <p>Os rolos de fita (aprovados em 21/07/2026 na versão v3.1) são o único elemento animado que aparece nos headers dos produtos. Inspirado no Pioneer RT-909 (1979-1984).</p>
+
+  <h3>Especificação técnica (não alterar)</h3>
+  <ul>
+    <li>SVG com viewBox <code>0 0 400 240</code>, width <code>400</code>, height <code>240</code></li>
+    <li>Supply esquerdo: <code>cx=100 cy=100</code>, transform-origin <code>100px 100px</code></li>
+    <li>Takeup direito: <code>cx=300 cy=100</code>, transform-origin <code>300px 100px</code></li>
+    <li>Ambos giram <strong>anti-horário</strong> — supply 2.8s, takeup 2.1s</li>
+    <li>Furação: 3 pás em arco de coroa (símbolo radioatividade), <code>r_inner=20 r_outer=60</code></li>
+    <li>VU meters internos com arco a <code>y=43</code> e raio 38 (dentro do rect)</li>
+    <li>Easter egg: Play/Stop/Rec no cabeçote central</li>
+    <li>Stop via <code>animation-play-state:paused</code> — sem pulo</li>
+  </ul>
+
+  <div class="why-box">
+    <div class="why-label">Por que rolos de fita?</div>
+    <p>O Estúdio Plá nasceu de uma pergunta sobre fitas Akai. O rolo de fita girando é literalmente a origem do projeto. É um símbolo que comunica exatamente o que o estúdio faz: processa e guarda som. Analógico e digital. E o movimento é hipnótico — você fica olhando.</p>
+  </div>
+</section>
+
+<!-- EM DEBATE -->
+<section class="chapter" id="debate">
+  <div class="cp-bar" data-narr="Capítulo doze, Decisões em debate. Primeira questão: cor dos títulos destacados — azul atual ou dourado? Segunda questão: itálico em Lora — nunca usar ou permitir apenas no título principal? Ambas ainda sem decisão final.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 12</div>
+  <h1>Decisões em Debate</h1>
+  <p class="lead">Estas são as questões abertas. Documentadas aqui para serem discutidas com calma.</p>
+
+  <div class="debate-box">
+    <div class="debate-label">🔵 Em debate — Cor dos títulos destacados (h1 em)</div>
+    <p style="color:var(--txt2);font-size:14px">Nos títulos grandes, a parte em destaque (ex: "<em>Gravação</em>" em "Manual de <em>Gravação</em>") aparece em azul claro atualmente. A discussão: deveria ser dourado?</p>
+    <div class="debate-options">
+      <div class="debate-opt">
+        <div class="debate-opt-label">Opção A — Azul (atual)</div>
+        <div style="font-family:'Lora',serif;font-size:28px;font-weight:700;line-height:1.1">Manual de <span style="color:var(--blue-lt)">Gravação</span></div>
+        <p style="font-size:13px;color:var(--txt2);margin-top:8px">Mantém coerência com a paleta técnica. Azul é a cor de precisão do estúdio.</p>
+      </div>
+      <div class="debate-opt">
+        <div class="debate-opt-label">Opção B — Dourado</div>
+        <div style="font-family:'Lora',serif;font-size:28px;font-weight:700;line-height:1.1">Manual de <span style="color:var(--gold)">Gravação</span></div>
+        <p style="font-size:13px;color:var(--txt2);margin-top:8px">Cria mais calor e diferenciação. Dourado remete ao analógico. Mais impacto visual.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="debate-box">
+    <div class="debate-label">🔵 Em debate — Itálico em Lora como recurso excepcional</div>
+    <p style="color:var(--txt2);font-size:14px">A regra atual é: sem itálico. Mas Lora em itálico tem movimento e personalidade que funciona em títulos grandes e isolados.</p>
+    <div class="debate-options">
+      <div class="debate-opt">
+        <div class="debate-opt-label">Opção A — Nunca itálico (atual)</div>
+        <div style="font-family:'Lora',serif;font-size:28px;font-weight:700">A Fita Não Esquece</div>
+        <p style="font-size:13px;color:var(--txt2);margin-top:8px">Consistência total. Mais sóbrio, mais técnico.</p>
+      </div>
+      <div class="debate-opt">
+        <div class="debate-opt-label">Opção B — Itálico só em h1 principal</div>
+        <div style="font-family:'Lora',serif;font-size:28px;font-weight:700;font-style:italic">A Fita Não Esquece</div>
+        <p style="font-size:13px;color:var(--txt2);margin-top:8px">Mais movimento. Mais literário. Reservado ao título maior de cada produto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGRAS ABSOLUTAS -->
+<section class="chapter" id="regras">
+  <div class="cp-bar" data-narr="Capítulo treze, Regras absolutas. Regra um: favicon obrigatório em todo HTML entregue, sem exceção. Regra dois: quote box nunca centralizado. Regra três: sem itálico como ênfase. Regra quatro: texto justificado em todo corpo. Regra cinco: Lora apenas em títulos. Regra seis: hamburger menu sempre na mesma posição fixa. Regra sete: fontes nunca menores que dezoito pixels. Regra oito: mobile primeiro em todos os produtos. Estúdio Plá. Bauru, Brasil.">
+      <button class="cp-btn cp-btn-dl" onclick="cpGenerate(this)">⬇ Baixar áudio</button>
+      <button class="cp-btn cp-btn-play" onclick="cpPlay(this)" disabled>▶ Ouvir</button>
+      <a class="cp-link">⬇ WAV</a>
+      <span class="cp-status"></span>
+    </div><div class="chapter-num">Capítulo 13</div>
+  <h1>Regras Absolutas</h1>
+  <p class="lead">Estas não se discutem. Valem para sempre, para tudo.</p>
+
+  <div class="component-box" style="border-left:4px solid var(--red)">
+    <ul style="list-style:none;padding:0">
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Favicon obrigatório</strong> em todo HTML entregue — produto, documento, teste, interno, externo. Sem exceção. Mínimo: SVG data URI inline no &lt;head&gt;.</li>
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Quote box nunca centralizado</strong> — sempre com borda lateral esquerda azul.</li>
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Sem itálico</strong> como recurso de ênfase. Ênfase = peso ou cor.</li>
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Texto justificado</strong> em todo corpo de texto.</li>
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Lora apenas em títulos</strong> (h1, h2, h3 editorial). Nunca em corpo.</li>
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Hamburger menu</strong> sempre na mesma posição fixa. Nada sobrepõe.</li>
+      <li style="padding:10px 0;border-bottom:1px solid var(--div)">🔴 <strong>Fonts nunca pequenas</strong> — Kaue tem presbiopia. Mínimo 14px. Preferência 15-17px para corpo.</li>
+      <li style="padding:10px 0">🔴 <strong>Mobile-first</strong> em todos os produtos — elementos grandes para toque, funções acessíveis em tela pequena.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:40px;padding:24px;background:var(--card2);border-radius:8px;text-align:center">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:8px">Versão deste documento</div>
+    <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:#fff">Manual de Identidade Visual</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin-top:4px">Estúdio Plá · v1.0 · Julho 2026</div>
+  </div>
+</section>
+
+</div><!-- /.main -->
+
+<script>
+'use strict';
+
+var kbVoice = 'Charon';
+var kbAudioCtx = null;
+var kbAudioSrc = null;
+
+var VP_PREFIX = 'Leia como professor experiente, voz firme e clara com autoridade, ritmo de aula, pausas precisas entre parágrafos, dicção perfeita em português brasileiro, sem dramatismo de narrador.\n\n';
+
+function kbSetVoice(v) {
+  kbVoice = v;
+  document.getElementById('kbCharon').classList.toggle('active', v==='Charon');
+  document.getElementById('kbKore').classList.toggle('active', v==='Kore');
+  // Atualizar label dos links de download existentes
+  document.querySelectorAll('.cp-link').forEach(function(a){
+    a.setAttribute('download','cap-'+v.toLowerCase()+'.wav');
+  });
+}
+
+function cpStatus(btn, msg) {
+  btn.closest('.cp-bar').querySelector('.cp-status').textContent = msg;
+}
+
+function cpPcmToWav(bytes, sr) {
+  var ch=1,bps=16,dl=bytes.length,buf=new ArrayBuffer(44+dl),v=new DataView(buf);
+  var w=function(o,s){for(var i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  w(0,'RIFF');v.setUint32(4,36+dl,true);w(8,'WAVE');
+  w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);
+  v.setUint16(22,ch,true);v.setUint32(24,sr,true);
+  v.setUint32(28,sr*ch*bps/8,true);v.setUint16(32,ch*bps/8,true);
+  v.setUint16(34,bps,true);w(36,'data');v.setUint32(40,dl,true);
+  new Uint8Array(buf,44).set(bytes);
+  return new Blob([buf],{type:'audio/wav'});
+}
+
+function cpEncodeWav(ab) {
+  var sr=ab.sampleRate,f32=ab.getChannelData(0),len=f32.length;
+  var buf=new ArrayBuffer(44+len*2),v=new DataView(buf);
+  var w=function(o,s){for(var i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  w(0,'RIFF');v.setUint32(4,36+len*2,true);w(8,'WAVE');
+  w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);
+  v.setUint16(22,1,true);v.setUint32(24,sr,true);
+  v.setUint32(28,sr*2,true);v.setUint16(32,2,true);
+  v.setUint16(34,16,true);w(36,'data');v.setUint32(40,len*2,true);
+  var dv=new DataView(buf,44);
+  for(var i=0;i<len;i++){
+    var s16=Math.max(-32768,Math.min(32767,Math.round(f32[i]*32767)));
+    dv.setInt16(i*2,s16,true);
+  }
+  return new Blob([buf],{type:'audio/wav'});
+}
+
+async function cpGenerate(dlBtn) {
+  var texto = dlBtn.closest('.cp-bar').getAttribute('data-narr');
+  var key = document.getElementById('kbKey').value.trim();
+  if (!key) { cpStatus(dlBtn, '⚠ Cole sua chave de voz primeiro.'); return; }
+  var bar = dlBtn.closest('.cp-bar');
+  var playBtn = bar.querySelector('.cp-btn-play');
+  var linkEl  = bar.querySelector('.cp-link');
+  dlBtn.disabled = true;
+  playBtn.disabled = true;
+  linkEl.classList.remove('show');
+  bar._decoded = null;
+  cpStatus(dlBtn, 'Gerando áudio com ' + kbVoice + '...');
+
+  try {
+    var resp = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key='+key,
+      { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          contents:[{parts:[{text: VP_PREFIX + texto}]}],
+          generationConfig:{responseModalities:['AUDIO'],
+            speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:kbVoice}}}}
+        })
+      }
+    );
+    var data = await resp.json();
+    if (data.error) { cpStatus(dlBtn, '⚠ ' + data.error.message); dlBtn.disabled=false; return; }
+    var part = data.candidates[0].content.parts[0].inlineData;
+    var b64=part.data, mime=part.mimeType||'';
+    var raw=atob(b64), bytes=new Uint8Array(raw.length);
+    for(var i=0;i<raw.length;i++) bytes[i]=raw.charCodeAt(i);
+
+    /* Decode — sempre tenta pcmToWav primeiro (Gemini retorna L16) */
+    kbAudioCtx = kbAudioCtx || new(window.AudioContext||window.webkitAudioContext)();
+    var decoded;
+    try {
+      var sr=24000;
+      var mRate=mime.match(/rate=(\d+)/i); if(mRate) sr=parseInt(mRate[1]);
+      var wavBlob=cpPcmToWav(bytes,sr), wavAb=await wavBlob.arrayBuffer();
+      decoded = await kbAudioCtx.decodeAudioData(wavAb);
+    } catch(e1) {
+      /* Fallback: tentar decodificar direto */
+      try {
+        decoded = await kbAudioCtx.decodeAudioData(bytes.buffer);
+      } catch(e2) {
+        throw new Error('Não foi possível decodificar o áudio. Tente novamente.');
+      }
+    }
+    bar._decoded = decoded;
+
+    /* Download disponível imediatamente */
+    var blob = cpEncodeWav(decoded);
+    var url  = URL.createObjectURL(blob);
+    linkEl.href = url;
+    linkEl.setAttribute('download','cap-'+kbVoice.toLowerCase()+'.wav');
+    linkEl.classList.add('show');
+
+    /* Habilita play */
+    playBtn.disabled = false;
+    dlBtn.disabled = false;
+    cpStatus(dlBtn, '✔ Pronto — baixe o WAV ou pressione Ouvir.');
+
+  } catch(e) {
+    cpStatus(dlBtn, '⚠ ' + (e.message||'Erro desconhecido') + ' — verifique a chave.');
+    dlBtn.disabled = false;
+    playBtn.disabled = false;
+  }
+}
+
+function cpPlay(playBtn) {
+  var bar = playBtn.closest('.cp-bar');
+  var decoded = bar._decoded;
+  if (!decoded) { cpStatus(playBtn, '⚠ Gere o áudio primeiro.'); return; }
+  if (kbAudioSrc) { try { kbAudioSrc.stop(); } catch(e) {} }
+  kbAudioCtx = kbAudioCtx || new(window.AudioContext||window.webkitAudioContext)();
+  var src = kbAudioCtx.createBufferSource();
+  kbAudioSrc = src;
+  src.buffer = decoded;
+  src.connect(kbAudioCtx.destination);
+  src.start(0);
+  cpStatus(playBtn, '▶ Reproduzindo — ' + kbVoice);
+  src.onended = function() { cpStatus(playBtn, '✔ Concluído.'); };
+}
+</script>
+</body>
+</html>
