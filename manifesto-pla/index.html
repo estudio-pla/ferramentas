@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html id="htmlRoot" lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manifesto PLA — Estúdio Plá</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23060d18' stroke='%233A9FEF' stroke-width='2'/><text x='16' y='21' text-anchor='middle' font-family='serif' font-size='14' font-weight='bold' fill='%23D4A83A'>P</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:#060d18; --card:#0a1628; --card2:#0d1e34;
+    --blue:#1A6FBF; --blue-lt:#3A9FEF;
+    --gold:#D4A83A; --txt:#c8daea; --txt2:#7a9ab8;
+    --div:rgba(58,159,239,0.12);
+  }
+  body { background:var(--bg); color:var(--txt); font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+
+  .lang-bar {
+    position:fixed; top:0; right:0; left:0; z-index:100;
+    display:flex; justify-content:flex-end; padding:10px 24px;
+    background:rgba(6,13,24,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--div);
+  }
+  .lang-btn {
+    background:none; border:1px solid var(--div); color:var(--txt2);
+    font-family:'Manrope',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; padding:5px 14px;
+    cursor:pointer; border-radius:2px; transition:all .2s;
+  }
+  .lang-btn+.lang-btn { margin-left:6px; }
+  .lang-btn.active { border-color:var(--blue-lt); color:var(--blue-lt); }
+
+  header {
+    padding:80px 24px 48px; text-align:center;
+    border-bottom:1px solid var(--div);
+    background:linear-gradient(180deg,#071828 0%,var(--bg) 100%);
+  }
+  .vu-wrap {
+    display:flex; justify-content:center; margin-bottom:28px;
+    filter:drop-shadow(0 0 28px rgba(58,159,239,0.12));
+  }
+
+  /* CSS exato v3.1 */
+  #spool-L { transform-origin:100px 100px; animation:ccw 2.8s linear infinite; animation-play-state:running; }
+  #spool-R { transform-origin:300px 100px; animation:ccw 2.1s linear infinite; animation-play-state:running; }
+  @keyframes ccw { from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
+  .ebtn { cursor:pointer; }
+  .ebtn:hover rect, .ebtn:hover circle, .ebtn:hover polygon { filter:brightness(2.2); }
+  @keyframes vu-idle { 0%,100%{transform:rotate(-36deg);} 50%{transform:rotate(-28deg);} }
+  .needle-idle { animation:vu-idle 1.8s ease-in-out infinite; transform-origin:50px 43px; }
+
+  .eyebrow { font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  h1 { font-family:'Lora',Georgia,serif; font-size:clamp(32px,5vw,56px); font-weight:700; line-height:1.15; color:#fff; margin-bottom:14px; }
+  h1 em { color:var(--blue-lt); font-style:normal; }
+  .subtitle { font-family:'Manrope',sans-serif; font-size:clamp(14px,1.6vw,17px); font-weight:400; color:var(--txt2); max-width:540px; margin:0 auto; line-height:1.6; }
+
+  /* Player */
+  .player-wrap { max-width:680px; margin:0 auto; padding:40px 24px 0; }
+  .player-box { background:var(--card); border:1px solid var(--div); border-radius:10px; padding:24px 28px; }
+  .player-title { font-family:'Manrope',sans-serif; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--txt2); margin-bottom:14px; }
+  .player-voices { display:flex; gap:8px; margin-bottom:12px; }
+  .voice-btn { flex:1; padding:9px; background:var(--card2); border:1px solid var(--div); border-radius:4px; color:var(--txt2); font-family:'Manrope',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all .2s; }
+  .voice-btn.active { border-color:var(--blue-lt); color:var(--blue-lt); background:rgba(58,159,239,0.07); }
+  .key-row { display:flex; gap:8px; margin-bottom:10px; }
+  .key-input { flex:1; padding:10px 14px; background:var(--card2); border:1px solid var(--div); border-radius:4px; color:var(--txt); font-family:'JetBrains Mono',monospace; font-size:12px; outline:none; }
+  .key-input:focus { border-color:var(--blue-lt); }
+  .key-link { display:flex; align-items:center; padding:0 14px; background:var(--card2); border:1px solid var(--div); border-radius:4px; color:var(--gold); font-family:'Manrope',sans-serif; font-size:12px; text-decoration:none; white-space:nowrap; }
+  .key-link:hover { border-color:var(--gold); }
+  .player-btns { display:flex; gap:8px; margin-bottom:10px; }
+  .btn-play { flex:1; padding:12px; background:var(--blue); border:none; border-radius:4px; color:#fff; font-family:'Manrope',sans-serif; font-size:13px; font-weight:800; letter-spacing:1px; cursor:pointer; transition:background .2s; }
+  .btn-play:hover { background:var(--blue-lt); }
+  .btn-stop { padding:12px 18px; background:none; border:1px solid var(--div); border-radius:4px; color:var(--txt2); font-family:'Manrope',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all .2s; }
+  .btn-stop:hover { border-color:var(--txt2); color:var(--txt); }
+  .btn-dl { padding:12px 18px; background:none; border:1px solid var(--div); border-radius:4px; color:var(--gold); font-family:'Manrope',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all .2s; display:none; text-decoration:none; white-space:nowrap; }
+  .btn-dl.visible { display:flex; align-items:center; }
+  .btn-dl:hover { border-color:var(--gold); }
+  .key-hint { font-size:11px; color:#3a5870; font-family:'Manrope',sans-serif; line-height:1.5; }
+  .status-bar { margin-top:10px; padding:8px 12px; background:var(--card2); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--txt2); min-height:32px; }
+
+  /* Manifesto */
+  .manifesto-wrap { max-width:660px; margin:0 auto; padding:60px 24px 80px; }
+  .manifesto-wrap p { font-family:'Manrope',sans-serif; font-size:clamp(15px,1.6vw,17px); font-weight:400; color:var(--txt); line-height:1.9; text-align:justify; margin-bottom:20px; }
+  .manifesto-wrap p.strong { font-weight:700; color:#fff; font-size:clamp(16px,1.8vw,18px); }
+  .quote-bar { border-left:4px solid var(--blue-lt); padding:18px 24px; background:var(--card2); border-radius:0 8px 8px 0; margin:28px 0; font-family:'Lora',Georgia,serif; font-size:clamp(15px,1.6vw,17px); font-weight:600; color:var(--txt); line-height:1.7; text-align:left; }
+  hr.div { width:48px; height:2px; border:none; margin:36px 0; background:linear-gradient(90deg,var(--blue-lt),transparent); }
+
+  footer { border-top:1px solid var(--div); padding:32px 24px; text-align:center; }
+  .footer-logo { font-family:'Lora',Georgia,serif; font-size:18px; font-weight:700; color:#fff; margin-bottom:6px; }
+  .footer-sub { font-family:'Manrope',sans-serif; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .footer-copy { font-family:'Manrope',sans-serif; font-size:11px; color:#1a3050; margin-top:14px; letter-spacing:1px; }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" id="btnPT" onclick="setLang('pt')">PT</button>
+  <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+</div>
+
+<header>
+  <div class="vu-wrap">
+    <svg id="main-svg" width="400" height="240" viewBox="0 0 400 240">
+    <defs>
+      <radialGradient id="gHubL" cx="38%" cy="30%" r="75%"><stop offset="0%" stop-color="#d0e8f8"/><stop offset="40%" stop-color="#5a90b8"/><stop offset="75%" stop-color="#12283e"/><stop offset="100%" stop-color="#060f1c"/></radialGradient>
+      <radialGradient id="gHubR" cx="38%" cy="30%" r="75%"><stop offset="0%" stop-color="#d0e8f8"/><stop offset="40%" stop-color="#5a90b8"/><stop offset="75%" stop-color="#12283e"/><stop offset="100%" stop-color="#060f1c"/></radialGradient>
+      <radialGradient id="gRim" cx="34%" cy="27%" r="78%"><stop offset="0%" stop-color="#ddeefa"/><stop offset="28%" stop-color="#7aaac8"/><stop offset="65%" stop-color="#162840"/><stop offset="100%" stop-color="#060f1c"/></radialGradient>
+      <radialGradient id="gGold" cx="40%" cy="33%" r="65%"><stop offset="0%" stop-color="#fff2b0"/><stop offset="48%" stop-color="#D4A83A"/><stop offset="100%" stop-color="#5a3e08"/></radialGradient>
+      <radialGradient id="gVU" cx="50%" cy="60%" r="65%"><stop offset="0%" stop-color="#fdf0c0"/><stop offset="70%" stop-color="#c4a040"/><stop offset="100%" stop-color="#6a5010"/></radialGradient>
+      <linearGradient id="gTape" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2e1600"/><stop offset="50%" stop-color="#4a2808"/><stop offset="100%" stop-color="#201000"/></linearGradient>
+      <filter id="fGlow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="fRed" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <path d="M 168 76 C 186 68 214 68 232 76" fill="none" stroke="url(#gTape)" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M 168 75 C 186 67 214 67 232 75" fill="none" stroke="#6a3810" stroke-width="1.2" opacity="0.55" stroke-linecap="round"/>
+    <path d="M 168 124 C 186 132 214 132 232 124" fill="none" stroke="url(#gTape)" stroke-width="5.5" stroke-linecap="round"/>
+    <circle cx="168" cy="76"  r="4.5" fill="#0c1c2e" stroke="#3A9FEF" stroke-width="0.9"/>
+    <circle cx="232" cy="76"  r="4.5" fill="#0c1c2e" stroke="#3A9FEF" stroke-width="0.9"/>
+    <circle cx="168" cy="124" r="4.5" fill="#0c1c2e" stroke="#3A9FEF" stroke-width="0.9"/>
+    <circle cx="232" cy="124" r="4.5" fill="#0c1c2e" stroke="#3A9FEF" stroke-width="0.9"/>
+    <g filter="url(#fGlow)">
+      <rect x="189" y="74" width="22" height="52" rx="3.5" fill="#060f1c" stroke="#1A6FBF" stroke-width="1.3"/>
+      <g class="ebtn" id="btn-stop"><rect x="192" y="78" width="16" height="9" rx="1.5" fill="#0a1828" stroke="#1a3a5a" stroke-width="0.7"/><rect x="197" y="80.5" width="5.5" height="4" rx="0.5" fill="#1a3a5a" id="i-stop"/></g>
+      <g class="ebtn" id="btn-play"><rect x="192" y="90" width="16" height="11" rx="1.5" fill="#0a1828" stroke="#1a3a5a" stroke-width="0.7" id="bg-play"/><polygon points="197,92.5 197,99.5 204,96" fill="#2a5880" id="i-play"/></g>
+      <g class="ebtn" id="btn-rec"><rect x="192" y="104" width="16" height="9" rx="1.5" fill="#0a1828" stroke="#1a3a5a" stroke-width="0.7" id="bg-rec"/><circle cx="200" cy="108.5" r="2.2" fill="#5a1010" id="i-rec"/></g>
+    </g>
+    <circle cx="200" cy="160" r="3.5" fill="#180404" stroke="#300808" stroke-width="0.8" id="rec-led"/>
+    <g id="spool-L">
+      <circle cx="100" cy="100" r="68" fill="url(#gRim)"/>
+      <circle cx="100" cy="100" r="62" fill="#030a14"/>
+      <circle cx="100" cy="100" r="66" fill="none" stroke="#7aaac8" stroke-width="1" opacity="0.35"/>
+      <path d="M 90 82.68 A 20 20 0 0 1 110 82.68 L 130 48.04 A 60 60 0 0 0 70 48.04 Z" fill="#0d1e32" stroke="#1a3a5a" stroke-width="0.8"/>
+      <path d="M 120 100 A 20 20 0 0 1 110 117.32 L 130 151.96 A 60 60 0 0 0 160 100 Z" fill="#0d1e32" stroke="#1a3a5a" stroke-width="0.8"/>
+      <path d="M 90 117.32 A 20 20 0 0 1 80 100 L 40 100 A 60 60 0 0 0 70 151.96 Z" fill="#0d1e32" stroke="#1a3a5a" stroke-width="0.8"/>
+      <path d="M 90 82.68 A 20 20 0 0 1 110 82.68" fill="none" stroke="#3a6898" stroke-width="1" opacity="0.5"/>
+      <path d="M 120 100 A 20 20 0 0 1 110 117.32" fill="none" stroke="#3a6898" stroke-width="1" opacity="0.5"/>
+      <path d="M 90 117.32 A 20 20 0 0 1 80 100" fill="none" stroke="#3a6898" stroke-width="1" opacity="0.5"/>
+      <circle cx="100" cy="100" r="22" fill="url(#gHubL)"/>
+      <circle cx="100" cy="100" r="20" fill="none" stroke="#5a90b8" stroke-width="1" opacity="0.5"/>
+      <circle cx="100" cy="100" r="15" fill="#060f1c" opacity="0.85"/>
+      <circle cx="100" cy="100" r="13" fill="url(#gHubL)" opacity="0.6"/>
+      <polygon points="100,83 103,89 97,89" fill="#D4A83A" opacity="0.9"/>
+      <polygon points="113.5,108 107.5,105 110.5,99" fill="#D4A83A" opacity="0.9"/>
+      <polygon points="86.5,108 92.5,105 89.5,99" fill="#D4A83A" opacity="0.9"/>
+      <circle cx="100" cy="100" r="8" fill="url(#gGold)" filter="url(#fGlow)"/>
+      <circle cx="100" cy="100" r="3.5" fill="#030a14"/>
+    </g>
+    <g id="spool-R">
+      <circle cx="300" cy="100" r="68" fill="url(#gRim)"/>
+      <circle cx="300" cy="100" r="62" fill="#1c0900"/>
+      <circle cx="300" cy="100" r="52" fill="#150700"/>
+      <circle cx="300" cy="100" r="42" fill="#0e0400"/>
+      <circle cx="300" cy="100" r="66" fill="none" stroke="#7aaac8" stroke-width="1" opacity="0.3"/>
+      <path d="M 290 82.68 A 20 20 0 0 1 310 82.68 L 330 48.04 A 60 60 0 0 0 270 48.04 Z" fill="#0d1e32" stroke="#1a3a5a" stroke-width="0.8"/>
+      <path d="M 320 100 A 20 20 0 0 1 310 117.32 L 330 151.96 A 60 60 0 0 0 360 100 Z" fill="#0d1e32" stroke="#1a3a5a" stroke-width="0.8"/>
+      <path d="M 290 117.32 A 20 20 0 0 1 280 100 L 240 100 A 60 60 0 0 0 270 151.96 Z" fill="#0d1e32" stroke="#1a3a5a" stroke-width="0.8"/>
+      <path d="M 290 82.68 A 20 20 0 0 1 310 82.68" fill="none" stroke="#3a6898" stroke-width="1" opacity="0.5"/>
+      <path d="M 320 100 A 20 20 0 0 1 310 117.32" fill="none" stroke="#3a6898" stroke-width="1" opacity="0.5"/>
+      <path d="M 290 117.32 A 20 20 0 0 1 280 100" fill="none" stroke="#3a6898" stroke-width="1" opacity="0.5"/>
+      <circle cx="300" cy="100" r="22" fill="url(#gHubR)"/>
+      <circle cx="300" cy="100" r="20" fill="none" stroke="#5a90b8" stroke-width="1" opacity="0.5"/>
+      <circle cx="300" cy="100" r="15" fill="#060f1c" opacity="0.85"/>
+      <circle cx="300" cy="100" r="13" fill="url(#gHubR)" opacity="0.6"/>
+      <polygon points="300,83 303,89 297,89" fill="#D4A83A" opacity="0.9"/>
+      <polygon points="313.5,108 307.5,105 310.5,99" fill="#D4A83A" opacity="0.9"/>
+      <polygon points="286.5,108 292.5,105 289.5,99" fill="#D4A83A" opacity="0.9"/>
+      <circle cx="300" cy="100" r="8" fill="url(#gGold)" filter="url(#fGlow)"/>
+      <circle cx="300" cy="100" r="3.5" fill="#030a14"/>
+    </g>
+    <g transform="translate(85,170)">
+      <rect x="0" y="0" width="100" height="50" rx="3" fill="url(#gVU)"/>
+      <path d="M 12 43 A 38 38 0 0 1 88 43" fill="none" stroke="#333" stroke-width="1.2"/>
+      <path d="M 83 24 A 38 38 0 0 1 88 43" fill="none" stroke="#bb1111" stroke-width="2"/>
+      <text x="50" y="44" font-family="sans-serif" font-size="5.5" font-weight="700" fill="#2a1800" text-anchor="middle">CH 1</text>
+      <g id="vn-L" class="needle-idle" style="transform-origin:50px 43px"><line x1="50" y1="43" x2="50" y2="9" stroke="#111" stroke-width="1.1"/><circle cx="50" cy="43" r="2.5" fill="#111"/></g>
+    </g>
+    <g transform="translate(215,170)">
+      <rect x="0" y="0" width="100" height="50" rx="3" fill="url(#gVU)"/>
+      <path d="M 12 43 A 38 38 0 0 1 88 43" fill="none" stroke="#333" stroke-width="1.2"/>
+      <path d="M 83 24 A 38 38 0 0 1 88 43" fill="none" stroke="#bb1111" stroke-width="2"/>
+      <text x="50" y="44" font-family="sans-serif" font-size="5.5" font-weight="700" fill="#2a1800" text-anchor="middle">CH 2</text>
+      <g id="vn-R" class="needle-idle" style="transform-origin:50px 43px"><line x1="50" y1="43" x2="50" y2="9" stroke="#111" stroke-width="1.1"/><circle cx="50" cy="43" r="2.5" fill="#111"/></g>
+    </g>
+    </svg>
+  </div>
+  <p class="eyebrow" data-i18n="eyebrow"></p>
+  <h1 data-i18n="h1"></h1>
+  <p class="subtitle" data-i18n="subtitle"></p>
+</header>
+
+<div class="player-wrap">
+  <div class="player-box">
+    <div class="player-title" data-i18n="playerTitle"></div>
+    <div class="player-voices">
+      <button class="voice-btn active" id="vbM" onclick="setVoice('Charon')" data-i18n="voiceMasc"></button>
+      <button class="voice-btn" id="vbF" onclick="setVoice('Kore')" data-i18n="voiceFem"></button>
+    </div>
+    <div class="key-row">
+      <input class="key-input" id="geminiKey" type="password" data-i18n-placeholder="keyPlaceholder"/>
+      <a class="key-link" href="https://aistudio.google.com/app/apikey" target="_blank" data-i18n="keyLink"></a>
+    </div>
+    <div class="player-btns">
+      <button class="btn-play" onclick="playAudio()" data-i18n="btnPlay"></button>
+      <button class="btn-stop" onclick="stopAudio()" data-i18n="btnStop"></button>
+      <a class="btn-dl" id="btnDl" download="manifesto-pla.wav" data-i18n="btnDl"></a>
+    </div>
+    <p class="key-hint" data-i18n="keyHint"></p>
+    <div class="status-bar" id="statusBar"></div>
+  </div>
+</div>
+
+<div class="manifesto-wrap" id="manifestoWrap"></div>
+
+<footer>
+  <div class="footer-logo">Estúdio Plá</div>
+  <div class="footer-sub" data-i18n="footerSub"></div>
+  <p class="footer-copy" data-i18n="footerCopy"></p>
+</footer>
+
+<script>
+'use strict';
+
+var VOICE_PREFIX_PT = 'Leia o texto a seguir como um professor experiente que domina o assunto com profundidade. Voz firme, clara e com autoridade. Ritmo de quem ensina — nem apressado, nem devagar. Pausas curtas e precisas entre os parágrafos. Dicção perfeita. Sem afetação, sem sussurro, sem dramatismo de narrador de documentário. Presença de quem sabe o que está dizendo.\n\n';
+var VOICE_PREFIX_EN = 'Read the following text as an experienced professor who deeply masters the subject. Firm, clear voice with authority. The pace of teaching — neither rushed nor slow. Short precise pauses between paragraphs. Perfect diction. No affectation, no whispering, no documentary narrator drama. The presence of someone who knows what they are saying.\n\n';
+
+var T = {
+  pt: {
+    lang:'pt-BR',
+    eyebrow:'Estúdio Plá · PLA v0.1 · Publicação Fundadora',
+    h1:'Manifesto <em>PLA</em>',
+    subtitle:'O sistema que une a física do analógico à precisão do digital.',
+    playerTitle:'🎙 Ouça o Manifesto — Narração por Gemini AI',
+    voiceMasc:'🎙 Charon — Masculina',
+    voiceFem:'🎙 Kore — Feminina',
+    keyPlaceholder:'Cole sua chave Gemini API aqui',
+    keyLink:'🔑 Obter chave grátis',
+    keyHint:'Sua chave permanece apenas nesta sessão — não é enviada a nenhum servidor nosso.',
+    btnPlay:'▶ Reproduzir',
+    btnStop:'■ Parar',
+    btnDl:'⬇ Baixar WAV',
+    statusInit:'Insira sua chave Gemini, escolha a voz e pressione Reproduzir.',
+    statusGen:'Gerando narração com ',
+    statusPlay:'▶ Reproduzindo — ',
+    statusDone:'✔ Concluído. Clique em Baixar WAV para salvar.',
+    statusStop:'■ Parada.',
+    statusNoKey:'⚠ Cole sua chave Gemini API no campo acima.',
+    statusErr:'⚠ Erro: ',
+    footerSub:'PLA v0.1 · Processamento Linear Ambiônico',
+    footerCopy:'© 2026 Estúdio Plá — Bauru, Brasil — Todos os direitos reservados',
+    blocks:[
+      {t:'ps', s:'Nós escolhemos fazer diferente.'},
+      {t:'p',  s:'O que existe não é ruim. Sabemos que é possível ir mais fundo — com rigor, clareza, e cuidado com quem está do outro lado aprendendo.'},
+      {t:'hr'},
+      {t:'p',  s:'O Estúdio Plá nasceu da junção de duas coisas que raramente se encontram no mesmo lugar: conhecimento técnico real — e vontade de compartilhá-lo de um jeito que qualquer pessoa consiga acessar.'},
+      {t:'p',  s:'A física do som analógico — o magnetismo, os transformadores, a saturação da fita, a alquimia do sulco no vinil — não é um segredo guardado a sete chaves. Ela está em livros de engenharia, em manuais de equipamento, em décadas de prática dentro dos grandes estúdios do mundo.'},
+      {t:'q',  s:'O que não existe é uma forma de organizar esse conhecimento com a profundidade que ele merece e a linguagem que precisa ter para alcançar quem ainda está descobrindo.'},
+      {t:'ps', s:'Isso é o que nós criamos.'},
+      {t:'hr'},
+      {t:'p',  s:'O Manual Definitivo de Gravação, Mixagem e Masterização Analógica é o primeiro trabalho do gênero. Quatro volumes que documentam o caminho completo do som — do diafragma do microfone ao sulco do vinil. Com diagramas de fluxo de sinal, fórmulas de engenharia reais, e fichas técnicas dos equipamentos que definiram o som do século vinte.'},
+      {t:'p',  s:'Com duas camadas em cada capítulo: uma porta de entrada para quem está chegando agora — e uma imersão técnica completa para quem já vive disso.'},
+      {t:'hr'},
+      {t:'p',  s:'Esse manual é a fundação, o conhecimento que alimenta a BIOS Plá — a inteligência do estúdio. Não uma inteligência artificial genérica. Uma inteligência especializada, construída sobre uma base real: a física do som, anos de prática, e a clareza de quem sabe exatamente o que está ensinando.'},
+      {t:'ps', s:'A prova de que isso funciona tem nome: SmartKhroma.'},
+      {t:'p',  s:'O SmartKhroma é o primeiro produto do PLA — Processamento Linear Ambiônico. Ele pega o sinal estéreo digital de qualquer dispositivo e entrega cinco canais de monitoramento de áudio com base nos mesmos princípios que governam o som analógico. Tecnologia de estúdio profissional — rodando no navegador, em qualquer celular ou tablet, sem instalação, sem complicação.'},
+      {t:'hr'},
+      {t:'q',  s:'Analógico e digital não são opostos. São etapas do mesmo processo. O analógico ensina a física. O digital executa essa física com precisão. O PLA é a metodologia que conecta os dois.'},
+      {t:'p',  s:'O Estúdio Plá é o lugar onde isso foi construído, documentado, e entregue para o mundo.'},
+      {t:'ps', s:'Não como promessa. Como produto.'},
+      {t:'hr'},
+      {t:'p',  s:'Estúdio Plá. Bauru, Brasil.'}
+    ],
+    audio:'Nós escolhemos fazer diferente.\n\nO que existe não é ruim. Sabemos que é possível ir mais fundo — com rigor, clareza, e cuidado com quem está do outro lado aprendendo.\n\nO Estúdio Plá nasceu da junção de duas coisas que raramente se encontram no mesmo lugar: conhecimento técnico real — e vontade de compartilhá-lo de um jeito que qualquer pessoa consiga acessar.\n\nA física do som analógico — o magnetismo, os transformadores, a saturação da fita, a alquimia do sulco no vinil — não é um segredo guardado a sete chaves. Ela está em livros de engenharia, em manuais de equipamento, em décadas de prática dentro dos grandes estúdios do mundo.\n\nO que não existe é uma forma de organizar esse conhecimento com a profundidade que ele merece e a linguagem que precisa ter para alcançar quem ainda está descobrindo. Isso é o que nós criamos.\n\nO Manual Definitivo de Gravação, Mixagem e Masterização Analógica é o primeiro trabalho do gênero. Quatro volumes que documentam o caminho completo do som — do diafragma do microfone ao sulco do vinil.\n\nCom duas camadas em cada capítulo: uma porta de entrada para quem está chegando agora — e uma imersão técnica completa para quem já vive disso.\n\nEsse manual é a fundação, o conhecimento que alimenta a BIOS Plá — a inteligência do estúdio. Não uma inteligência artificial genérica. Uma inteligência especializada, construída sobre uma base real.\n\nA prova de que isso funciona tem nome: SmartKhroma.\n\nO SmartKhroma é o primeiro produto do PLA — Processamento Linear Ambiônico. Tecnologia de estúdio profissional — rodando no navegador, em qualquer celular ou tablet, sem instalação, sem complicação.\n\nAnalógico e digital não são opostos. São etapas do mesmo processo. O analógico ensina a física. O digital executa essa física com precisão. O PLA é a metodologia que conecta os dois.\n\nO Estúdio Plá é o lugar onde isso foi construído, documentado, e entregue para o mundo.\n\nNão como promessa. Como produto.\n\nEstúdio Plá. Bauru, Brasil.'
+  },
+  en: {
+    lang:'en-US',
+    eyebrow:'Estúdio Plá · PLA v0.1 · Founding Publication',
+    h1:'<em>PLA</em> Manifesto',
+    subtitle:'The system that connects the physics of analog to the precision of digital.',
+    playerTitle:'🎙 Listen to the Manifesto — Narrated by Gemini AI',
+    voiceMasc:'🎙 Charon — Male',
+    voiceFem:'🎙 Kore — Female',
+    keyPlaceholder:'Paste your Gemini API key here',
+    keyLink:'🔑 Get free key',
+    keyHint:'Your key stays in this browser session only — never sent to our servers.',
+    btnPlay:'▶ Play',
+    btnStop:'■ Stop',
+    btnDl:'⬇ Download WAV',
+    statusInit:'Enter your Gemini key, choose a voice, and press Play.',
+    statusGen:'Generating narration with ',
+    statusPlay:'▶ Playing — ',
+    statusDone:'✔ Done. Click Download WAV to save.',
+    statusStop:'■ Stopped.',
+    statusNoKey:'⚠ Paste your Gemini API key in the field above.',
+    statusErr:'⚠ Error: ',
+    footerSub:'PLA v0.1 · Linear Ambisonic Processing',
+    footerCopy:'© 2026 Estúdio Plá — Bauru, Brazil — All rights reserved',
+    blocks:[
+      {t:'ps', s:'We chose to do things differently.'},
+      {t:'p',  s:'What exists is not bad. We know it is possible to go deeper — with rigor, clarity, and care for those on the other side, learning.'},
+      {t:'hr'},
+      {t:'p',  s:'Estúdio Plá was born from the combination of two things that rarely exist in the same place: real technical knowledge — and the will to share it in a way that anyone can access.'},
+      {t:'p',  s:'The physics of analog sound — magnetism, transformers, tape saturation, the alchemy of the groove on the lacquer — is not a secret kept under lock and key. It exists in engineering books, equipment manuals, and decades of practice inside the world\'s great studios.'},
+      {t:'q',  s:'What does not exist is a way to organize this knowledge with the depth it deserves and the language it needs to reach those who are still discovering.'},
+      {t:'ps', s:'That is what we created.'},
+      {t:'hr'},
+      {t:'p',  s:'The Definitive Manual of Analog Recording, Mixing and Mastering is the first work of its kind. Four volumes documenting the complete path of sound — from microphone diaphragm to vinyl groove. With signal flow diagrams, real engineering formulas, and specification sheets for the equipment that defined the sound of the twentieth century.'},
+      {t:'p',  s:'With two layers in every chapter: an accessible entry point for those just arriving — and a complete technical deep-dive for those who already live it.'},
+      {t:'hr'},
+      {t:'p',  s:'This manual is the foundation, the knowledge that powers BIOS Plá — the studio\'s intelligence. Not a generic artificial intelligence. A specialized intelligence, built on a real foundation: the physics of sound, years of practice, and the clarity of someone who knows exactly what they are teaching.'},
+      {t:'ps', s:'The proof that this works has a name: SmartKhroma.'},
+      {t:'p',  s:'SmartKhroma is the first product of PLA — Linear Ambisonic Processing. It takes the stereo digital signal from any device and delivers five channels of audio monitoring based on the same principles that govern analog sound. Professional studio technology — running in the browser, on any phone or tablet, no installation, no complications.'},
+      {t:'hr'},
+      {t:'q',  s:'Analog and digital are not opposites. They are stages of the same process. Analog teaches the physics. Digital executes that physics with precision. PLA is the methodology that connects the two.'},
+      {t:'p',  s:'Estúdio Plá is the place where this was built, documented, and delivered to the world.'},
+      {t:'ps', s:'Not as a promise. As a product.'},
+      {t:'hr'},
+      {t:'p',  s:'Estúdio Plá. Bauru, Brazil.'}
+    ],
+    audio:'We chose to do things differently.\n\nWhat exists is not bad. We know it is possible to go deeper — with rigor, clarity, and care for those on the other side, learning.\n\nEstúdio Plá was born from the combination of two things that rarely exist in the same place: real technical knowledge — and the will to share it in a way that anyone can access.\n\nThe physics of analog sound — magnetism, transformers, tape saturation, the alchemy of the groove on the lacquer — is not a secret kept under lock and key. It exists in engineering books, equipment manuals, and decades of practice inside the world\'s great studios.\n\nWhat does not exist is a way to organize this knowledge with the depth it deserves and the language it needs to reach those who are still discovering. That is what we created.\n\nThe Definitive Manual of Analog Recording, Mixing and Mastering is the first work of its kind. Four volumes documenting the complete path of sound — from microphone diaphragm to vinyl groove.\n\nWith two layers in every chapter: an accessible entry point for those just arriving — and a complete technical deep-dive for those who already live it.\n\nThis manual is the foundation, the knowledge that powers BIOS Plá — the studio\'s intelligence. Not a generic artificial intelligence. A specialized intelligence, built on a real foundation.\n\nThe proof that this works has a name: SmartKhroma.\n\nSmartKhroma is the first product of PLA — Linear Ambisonic Processing. Professional studio technology — running in the browser, on any phone or tablet, no installation, no complications.\n\nAnalog and digital are not opposites. They are stages of the same process. Analog teaches the physics. Digital executes that physics with precision. PLA is the methodology that connects the two.\n\nEstúdio Plá is the place where this was built, documented, and delivered to the world.\n\nNot as a promise. As a product.\n\nEstúdio Plá. Bauru, Brazil.'
+  }
+};
+
+var lang='pt', voiceName='Charon', audioCtx=null, audioSrc=null, isPlaying=false, lastWavBlob=null;
+
+function setLang(l){
+  lang=l;
+  document.getElementById('htmlRoot').lang=T[l].lang;
+  document.getElementById('btnPT').classList.toggle('active',l==='pt');
+  document.getElementById('btnEN').classList.toggle('active',l==='en');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[l][k]!==undefined) el.innerHTML=T[l][k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var k=el.getAttribute('data-i18n-placeholder');
+    if(T[l][k]!==undefined) el.placeholder=T[l][k];
+  });
+  renderBlocks(l);
+  setStatus(T[l].statusInit);
+}
+
+function renderBlocks(l){
+  var w=document.getElementById('manifestoWrap');
+  w.innerHTML='';
+  T[l].blocks.forEach(function(b){
+    if(b.t==='hr'){ var hr=document.createElement('hr'); hr.className='div'; w.appendChild(hr); }
+    else if(b.t==='q'){ var d=document.createElement('div'); d.className='quote-bar'; d.textContent=b.s; w.appendChild(d); }
+    else { var p=document.createElement('p'); if(b.t==='ps') p.className='strong'; p.textContent=b.s; w.appendChild(p); }
+  });
+}
+
+function setVoice(v){
+  voiceName=v;
+  document.getElementById('vbM').classList.toggle('active',v==='Charon');
+  document.getElementById('vbF').classList.toggle('active',v==='Kore');
+}
+
+function setStatus(m){ var el=document.getElementById('statusBar'); if(el) el.textContent=m; }
+
+/* ── WAV helpers ─────────────────────────────────────────────── */
+
+/* Adiciona header WAV em dados PCM L16 brutos */
+function pcmToWav(pcmBytes, sr) {
+  var ch=1, bps=16, dl=pcmBytes.length;
+  var buf=new ArrayBuffer(44+dl), v=new DataView(buf);
+  var w=function(o,s){for(var i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  w(0,'RIFF'); v.setUint32(4,36+dl,true); w(8,'WAVE');
+  w(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true);
+  v.setUint16(22,ch,true); v.setUint32(24,sr,true);
+  v.setUint32(28,sr*ch*bps/8,true); v.setUint16(32,ch*bps/8,true);
+  v.setUint16(34,bps,true); w(36,'data'); v.setUint32(40,dl,true);
+  new Uint8Array(buf,44).set(pcmBytes);
+  return new Blob([buf],{type:'audio/wav'});
+}
+
+/* Re-encoda AudioBuffer decodificado → WAV perfeito para download */
+function encodeWav(audioBuffer){
+  var sr=audioBuffer.sampleRate, f32=audioBuffer.getChannelData(0), len=f32.length;
+  var buf=new ArrayBuffer(44+len*2), v=new DataView(buf);
+  var w=function(o,s){for(var i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  w(0,'RIFF'); v.setUint32(4,36+len*2,true); w(8,'WAVE');
+  w(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true);
+  v.setUint16(22,1,true); v.setUint32(24,sr,true);
+  v.setUint32(28,sr*2,true); v.setUint16(32,2,true);
+  v.setUint16(34,16,true); w(36,'data'); v.setUint32(40,len*2,true);
+  var dv=new DataView(buf,44);
+  for(var i=0;i<len;i++){
+    var s16=Math.max(-32768,Math.min(32767,Math.round(f32[i]*32767)));
+    dv.setInt16(i*2,s16,true);
+  }
+  return new Blob([buf],{type:'audio/wav'});
+}
+
+/* Decodifica qualquer resposta Gemini TTS → AudioBuffer */
+async function decodeGeminiAudio(b64, mimeType, ctx) {
+  var raw=atob(b64), bytes=new Uint8Array(raw.length);
+  for(var i=0;i<raw.length;i++) bytes[i]=raw.charCodeAt(i);
+
+  var isL16 = mimeType && (mimeType.indexOf('L16')!==-1 || mimeType.indexOf('pcm')!==-1);
+  if(isL16){
+    /* Extrai sample rate do mime type (ex: rate=24000) */
+    var sr=24000;
+    var m=mimeType.match(/rate=(\d+)/i);
+    if(m) sr=parseInt(m[1]);
+    /* Adiciona header WAV e decodifica */
+    var wavBlob=pcmToWav(bytes, sr);
+    var wavBuf=await wavBlob.arrayBuffer();
+    return await ctx.decodeAudioData(wavBuf);
+  } else {
+    return await ctx.decodeAudioData(bytes.buffer);
+  }
+}
+
+async function playAudio(){
+  var key=document.getElementById('geminiKey').value.trim();
+  if(!key){ setStatus(T[lang].statusNoKey); return; }
+  if(isPlaying) stopAudio();
+  var dl=document.getElementById('btnDl');
+  dl.classList.remove('visible');
+  setStatus(T[lang].statusGen+voiceName+'...');
+  var prefix=lang==='pt'?VOICE_PREFIX_PT:VOICE_PREFIX_EN;
+  try{
+    var resp=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key='+key,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        contents:[{parts:[{text:prefix+T[lang].audio}]}],
+        generationConfig:{responseModalities:['AUDIO'],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:voiceName}}}}
+      })
+    });
+    var data=await resp.json();
+    if(data.error){ setStatus('⚠ Gemini: '+data.error.message); return; }
+    var part=data.candidates[0].content.parts[0].inlineData;
+    var b64=part.data, mimeType=part.mimeType||'';
+
+    /* Passo 1: disponibilizar download ANTES do decode — fallback garantido */
+    var rawBytes=atob(b64), pcmFallback=new Uint8Array(rawBytes.length);
+    for(var i=0;i<rawBytes.length;i++) pcmFallback[i]=rawBytes.charCodeAt(i);
+    var fallbackSr=24000; var mR=mimeType.match(/rate=(\d+)/i); if(mR) fallbackSr=parseInt(mR[1]);
+    var isL16=mimeType.indexOf('L16')!==-1||mimeType.indexOf('pcm')!==-1;
+    lastWavBlob = isL16 ? pcmToWav(pcmFallback, fallbackSr) : new Blob([pcmFallback],{type:'audio/wav'});
+    dl.href=URL.createObjectURL(lastWavBlob);
+    dl.setAttribute('download','manifesto-pla-'+voiceName.toLowerCase()+'.wav');
+    dl.classList.add('visible');
+    setStatus(T[lang].statusPlay+voiceName+' · Gemini AI — ⬇ WAV disponível');
+
+    /* Passo 2: decodificar e reproduzir */
+    try {
+      audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+      var decoded=await decodeGeminiAudio(b64, mimeType, audioCtx);
+      /* Melhorar o WAV com o AudioBuffer real */
+      lastWavBlob=encodeWav(decoded);
+      dl.href=URL.createObjectURL(lastWavBlob);
+      if(audioSrc){try{audioSrc.stop();}catch(e){}}
+      audioSrc=audioCtx.createBufferSource();
+      audioSrc.buffer=decoded; audioSrc.connect(audioCtx.destination); audioSrc.start(0);
+      isPlaying=true; setStatus(T[lang].statusPlay+voiceName+' · Gemini AI');
+      audioSrc.onended=function(){ isPlaying=false; setStatus(T[lang].statusDone); };
+    } catch(decErr) {
+      /* Decode falhou mas download já está disponível */
+      setStatus('▶ ' + voiceName + ' gerado · ⬇ Clique em Baixar WAV (playback indisponível neste browser)');
+    }
+  }catch(e){ setStatus(T[lang].statusErr+e.message); }
+}
+
+function stopAudio(){
+  if(audioSrc){try{audioSrc.stop();}catch(e){}}
+  isPlaying=false; setStatus(T[lang].statusStop);
+}
+
+/* Rolos — JS v3.1 */
+(function(){
+  var spL=document.getElementById('spool-L'),spR=document.getElementById('spool-R');
+  var led=document.getElementById('rec-led');
+  var bgPlay=document.getElementById('bg-play'),iPlay=document.getElementById('i-play');
+  var bgRec=document.getElementById('bg-rec'),iRec=document.getElementById('i-rec');
+  var iStop=document.getElementById('i-stop');
+  var vnL=document.getElementById('vn-L'),vnR=document.getElementById('vn-R');
+  var mode='PLAY',vuL=-34,vuR=-34;
+  function applyMode(m){
+    mode=m;
+    spL.style.animationPlayState=m==='STOP'?'paused':'running';
+    spR.style.animationPlayState=m==='STOP'?'paused':'running';
+    iStop.setAttribute('fill',m==='STOP'?'#3A9FEF':'#1a3a5a');
+    bgPlay.setAttribute('fill',m!=='STOP'?'#0d2040':'#0a1828');
+    iPlay.setAttribute('fill',m!=='STOP'?'#3A9FEF':'#2a5880');
+    bgRec.setAttribute('stroke',m==='REC'?'#cc2222':'#1a3a5a');
+    iRec.setAttribute('fill',m==='REC'?'#ff2020':'#5a1010');
+    if(m==='REC'){
+      iRec.setAttribute('filter','url(#fRed)');
+      led.setAttribute('fill','#ff1010');led.setAttribute('stroke','#ff5050');led.setAttribute('filter','url(#fRed)');
+    } else {
+      iRec.removeAttribute('filter');
+      led.setAttribute('fill','#180404');led.setAttribute('stroke','#300808');led.removeAttribute('filter');
+    }
+  }
+  document.getElementById('btn-stop').addEventListener('click',function(){applyMode('STOP');});
+  document.getElementById('btn-play').addEventListener('click',function(){applyMode('PLAY');});
+  document.getElementById('btn-rec').addEventListener('click',function(){applyMode('REC');});
+  applyMode('PLAY');
+  function vuLoop(){
+    var tL=-34,tR=-34;
+    if(mode!=='STOP'){ var t=Date.now()*0.001,b=mode==='REC'?Math.sin(t*1.3)*16+8:Math.sin(t*1.1)*10+1; tL=b+Math.random()*(mode==='REC'?14:10); tR=b+Math.random()*(mode==='REC'?14:10); }
+    var sp=mode==='STOP'?0.04:0.20; vuL+=(tL-vuL)*sp; vuR+=(tR-vuR)*sp;
+    vnL.style.transform='rotate('+Math.max(-36,Math.min(32,vuL))+'deg)';
+    vnR.style.transform='rotate('+Math.max(-36,Math.min(32,vuR))+'deg)';
+    requestAnimationFrame(vuLoop);
+  }
+  vuLoop();
+})();
+
+setLang('pt');
+</script>
+</body>
+</html>
